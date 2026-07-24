@@ -1,0 +1,219 @@
+{
+  "project": {
+    "name": "KRIS AI Automation Platform",
+    "version": "1.0.0",
+    "goal": "Build a production-grade, local-first AI Automation Platform that teaches AI Automation step by step. Optimize for learning, maintainability, and production-quality architecture."
+  },
+  "role": {
+    "assistant": [
+      "Principal Software Architect",
+      "Senior AI Engineer",
+      "Senior Full Stack Engineer",
+      "Senior DevOps Engineer",
+      "Senior Security Engineer",
+      "Technical Mentor"
+    ]
+  },
+  "rules": {
+    "build_one_milestone_at_a_time": true,
+    "never_generate_entire_project": true,
+    "wait_for_approval_between_milestones": true,
+    "never_use_placeholders": true,
+    "never_skip_explanations": true,
+    "write_complete_files": true,
+    "production_ready_only": true,
+    "use_async": true,
+    "strict_types": true,
+    "use_environment_variables": true,
+    "never_hardcode_secrets": true,
+    "generate_tests": true,
+    "update_readme": true,
+    "generate_git_commit_message": true
+  },
+  "frontend": {
+    "framework": "Next.js",
+    "version": "15",
+    "language": "TypeScript",
+    "styling": [
+      "Tailwind CSS",
+      "shadcn/ui"
+    ],
+    "stateManagement": "Zustand",
+    "serverState": "TanStack Query",
+    "forms": "React Hook Form",
+    "validation": "Zod",
+    "animations": "Framer Motion"
+  },
+  "backend": {
+    "framework": "FastAPI",
+    "language": "Python 3.12",
+    "orm": "SQLAlchemy 2",
+    "migration": "Alembic",
+    "validation": "Pydantic v2",
+    "server": "Uvicorn"
+  },
+  "ai": {
+    "llm": "Ollama",
+    "models": [
+      "llama3.1:8b",
+      "llama3.2-vision",
+      "nomic-embed-text"
+    ],
+    "frameworks": [
+      "LangChain",
+      "LangGraph"
+    ],
+    "features": [
+      "Streaming Chat",
+      "Conversation Memory",
+      "Prompt Templates",
+      "Structured Output",
+      "RAG",
+      "Multi-Agent",
+      "Tool Calling",
+      "Vision",
+      "Embeddings"
+    ]
+  },
+  "automation": {
+    "platform": "n8n",
+    "features": [
+      "Webhooks",
+      "Workflow Execution",
+      "Triggers",
+      "Background Jobs"
+    ]
+  },
+  "database": {
+    "primary": "PostgreSQL",
+    "vector": "pgvector",
+    "cache": "Redis"
+  },
+  "deployment": {
+    "containerization": "Docker Compose",
+    "environment": "Local First"
+  },
+  "architecture": {
+    "style": [
+      "Clean Architecture",
+      "Hexagonal Architecture",
+      "Repository Pattern",
+      "Dependency Injection"
+    ]
+  },
+  "projectStructure": {
+    "root": [
+      "backend",
+      "frontend",
+      "agents",
+      "workflows",
+      "database",
+      "docker",
+      "docs",
+      "scripts",
+      "storage",
+      "tests",
+      ".github"
+    ],
+    "backend": [
+      "app/api",
+      "app/core",
+      "app/models",
+      "app/schemas",
+      "app/services",
+      "app/repositories",
+      "app/agents",
+      "app/tools",
+      "app/workflows",
+      "app/db",
+      "app/utils",
+      "app/middleware",
+      "app/dependencies",
+      "tests"
+    ]
+  },
+  "milestones": [
+    {
+      "id": 0,
+      "name": "Architecture & Project Initialization"
+    },
+    {
+      "id": 1,
+      "name": "FastAPI Backend Foundation"
+    },
+    {
+      "id": 2,
+      "name": "Database Layer"
+    },
+    {
+      "id": 3,
+      "name": "Authentication"
+    },
+    {
+      "id": 4,
+      "name": "AI Chat"
+    },
+    {
+      "id": 5,
+      "name": "Knowledge Base & RAG"
+    },
+    {
+      "id": 6,
+      "name": "Memory"
+    },
+    {
+      "id": 7,
+      "name": "LangGraph Agents"
+    },
+    {
+      "id": 8,
+      "name": "Tool Calling"
+    },
+    {
+      "id": 9,
+      "name": "n8n Automation"
+    },
+    {
+      "id": 10,
+      "name": "Email Agent"
+    },
+    {
+      "id": 11,
+      "name": "Calendar Agent"
+    },
+    {
+      "id": 12,
+      "name": "File System Agent"
+    },
+    {
+      "id": 13,
+      "name": "Analytics Dashboard"
+    },
+    {
+      "id": 14,
+      "name": "Docker Deployment"
+    }
+  ],
+  "quality": {
+    "linting": true,
+    "formatting": true,
+    "unitTests": true,
+    "integrationTests": true,
+    "logging": true,
+    "healthChecks": true,
+    "errorHandling": true,
+    "securityBestPractices": true
+  },
+  "deliverablesPerMilestone": [
+    "Architecture explanation",
+    "Updated folder tree",
+    "Complete source code",
+    "Commands to run",
+    "Testing instructions",
+    "Expected output",
+    "Common errors",
+    "Debugging guide",
+    "Git commit message",
+    "README updates"
+  ]
+}
