@@ -7,6 +7,8 @@ dependencies = [
     "fastapi>=0.115",
     "uvicorn[standard]>=0.30",
     "pydantic>=2.9",
+    "pydantic[email]>=2.9",
+    "email-validator>=2.2",
     "pydantic-settings>=2.5",
     "sqlalchemy[asyncio]>=2.0",
     "asyncpg>=0.29",
@@ -14,7 +16,7 @@ dependencies = [
     "redis>=5.0",
     "httpx>=0.27",
     "python-jose[cryptography]>=3.3",
-    "passlib[bcrypt]>=1.7",
+    "bcrypt>=4.1",
     "langchain>=0.3",
     "langgraph>=0.2",
     "pgvector>=0.3",
@@ -29,6 +31,7 @@ dev = [
     "pytest-asyncio>=0.24",
     "httpx>=0.27",
     "psycopg2-binary>=2.9",   # sync driver for Alembic offline ops only
+    "types-python-jose>=3.3",
 ]
 
 [tool.ruff]
@@ -56,6 +59,12 @@ disallow_untyped_defs = true
 asyncio_mode = "auto"
 testpaths = ["tests"]
 addopts = "-ra -q"
+filterwarnings = [
+    # Cosmetic: the module-level async engine is not disposed under ASGITransport
+    # (no lifespan), so asyncpg connections are GC'd after the test event loop.
+    "ignore:.*garbage collector is trying to clean up.*:Warning",
+    "ignore:.*non-checked-in connection.*:Warning",
+]
 
 [build-system]
 requires = ["hatchling"]

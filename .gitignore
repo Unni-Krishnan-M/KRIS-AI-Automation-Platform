@@ -11,6 +11,8 @@ __pycache__/
 # Node
 node_modules/
 
+docs/
+
 # Docker volumes (if bind-mounted locally)
 db/data/
 

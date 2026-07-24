@@ -47,14 +47,55 @@ KRIS-AI-Automation-Platform/
 ## Quick start
 
 ```bash
-# 1. Infrastructure
+# 1. Infrastructure (Postgres+pgvector, Redis, n8n)
 docker compose up -d
 
-# 2. Python environment
-source .venv/bin/activate
+# 2. Backend
+cd backend
+cp .env.example .env            # then edit values
+uv pip install -e ".[dev]"      # into ../.venv
+uvicorn app.main:app --reload   # http://localhost:8000
 
-# 3. Frontend (Flutter) — once scaffolded
-cd frontend && flutter run
+# 3. Verify
+curl http://localhost:8000/health          # liveness
+curl http://localhost:8000/health/ready     # all dependencies
+```
+
+## Backend endpoints (M1)
+
+| Endpoint | Purpose |
+|----------|---------|
+| `GET /health` | Liveness (no dependencies) |
+| `GET /health/db` | PostgreSQL connectivity |
+| `GET /health/redis` | Redis connectivity |
+| `GET /health/ollama` | Ollama model-server connectivity |
+| `GET /health/ready` | Aggregate readiness (503 if any degraded) |
+| `GET /docs` | Interactive OpenAPI docs |
+| `POST /api/v1/auth/register` | Create an account |
+| `POST /api/v1/auth/login` | Get access + refresh tokens |
+| `POST /api/v1/auth/refresh` | Rotate refresh token → new pair |
+| `POST /api/v1/auth/logout` | Revoke a refresh token |
+| `GET /api/v1/auth/me` | Current user (Bearer access token) |
+
+## Database migrations (Alembic)
+
+```bash
+cd backend
+alembic upgrade head          # apply all migrations
+alembic current               # show current revision
+alembic downgrade -1          # roll back one revision
+alembic revision -m "msg"     # new (empty) migration
+alembic revision --autogenerate -m "msg"   # diff models -> migration
+```
+Alembic uses `DATABASE_SYNC_URL` (psycopg2). Migrations live in `backend/alembic/versions/`.
+
+## Quality gate
+
+```bash
+cd backend
+ruff check . && ruff format --check .   # lint + format
+mypy app                                 # strict type-check
+pytest                                   # tests
 ```
 
 ## Tech stack
