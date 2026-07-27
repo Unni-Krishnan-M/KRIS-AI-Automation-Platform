@@ -76,6 +76,16 @@ curl http://localhost:8000/health/ready     # all dependencies
 | `POST /api/v1/auth/refresh` | Rotate refresh token → new pair |
 | `POST /api/v1/auth/logout` | Revoke a refresh token |
 | `GET /api/v1/auth/me` | Current user (Bearer access token) |
+| `GET /api/v1/chat/conversations` | List your conversations |
+| `POST /api/v1/chat/conversations` | Create a conversation |
+| `GET /api/v1/chat/conversations/{id}` | Conversation + messages |
+| `DELETE /api/v1/chat/conversations/{id}` | Soft-delete a conversation |
+| `POST /api/v1/chat/conversations/{id}/messages` | Send message, stream reply (SSE) |
+| `GET /api/v1/knowledge` | List your knowledge bases |
+| `POST /api/v1/knowledge` | Create a knowledge base |
+| `POST /api/v1/knowledge/{id}/documents` | Upload & ingest a document |
+| `GET /api/v1/knowledge/{id}/documents` | List documents |
+| `POST /api/v1/knowledge/{id}/search` | Semantic search (pgvector) |
 
 ## Database migrations (Alembic)
 
