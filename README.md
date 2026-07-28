@@ -86,6 +86,14 @@ curl http://localhost:8000/health/ready     # all dependencies
 | `POST /api/v1/knowledge/{id}/documents` | Upload & ingest a document |
 | `GET /api/v1/knowledge/{id}/documents` | List documents |
 | `POST /api/v1/knowledge/{id}/search` | Semantic search (pgvector) |
+| `GET /api/v1/memory` | List memories (optional `?scope=`) |
+| `POST /api/v1/memory` | Store a memory |
+| `POST /api/v1/memory/search` | Recall memories by similarity |
+| `DELETE /api/v1/memory/{id}` | Delete a memory |
+| `GET /api/v1/agents` | List agent definitions |
+| `POST /api/v1/agents` | Define an agent |
+| `POST /api/v1/agents/{id}/run` | Run agent (LangGraph), returns run + steps |
+| `GET /api/v1/agents/runs/{id}` | Fetch a past run + steps |
 
 ## Database migrations (Alembic)
 

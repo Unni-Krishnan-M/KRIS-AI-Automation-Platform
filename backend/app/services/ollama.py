@@ -25,6 +25,23 @@ class OllamaClient:
         self._base_url = settings.ollama_base_url.rstrip("/")
         self._default_model = settings.ollama_chat_model
 
+    async def chat(
+        self,
+        messages: list[dict[str, str]],
+        model: str | None = None,
+    ) -> str:
+        """Return the full assistant reply (non-streaming)."""
+        payload = {
+            "model": model or self._default_model,
+            "messages": messages,
+            "stream": False,
+        }
+        async with httpx.AsyncClient(timeout=_TIMEOUT) as client:
+            response = await client.post(f"{self._base_url}/api/chat", json=payload)
+            response.raise_for_status()
+            content: str = response.json()["message"]["content"]
+            return content
+
     async def chat_stream(
         self,
         messages: list[dict[str, str]],
